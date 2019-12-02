@@ -9,6 +9,7 @@
   "devDependencies": {
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "3.0.2",
+    "dukat": "^0.0.23",
     "react-scripts-kotlin": "4.0.2"
   },
   "scripts": {
