@@ -214,7 +214,81 @@ But it worked: it was possible to add a Button to main frontend.
 
 ### NPM module from Maven without Gradle
 
-TODO
+Because of some libraries are available only on Maven, they are packaged as jar files;
+in a `package.json`, compatible options are:
+
+  - packages from NPM, by name;
+  - local packages in folders, by path or by symlink;
+  - local packages in gzipped tarballs, by path;
+  - packages from git repository, by URL and with optional specific branch, commit or tag;
+  - remote packages in gzipped tarballs, by URL.
+
+There is no way to import the jar without decompressing it (as jar or zip format are not supported, and git repo is not an NPM module).
+
+The package can be fetch with `wget` from Bintray:
+
+```bash
+wget https://dl.bintray.com/subroh0508/maven/subroh0508/net/kotlinmaterialui/core/0.2.3/core-0.2.3.jar
+```
+
+And then extracted:
+
+```bash
+unzip core-0.2.3.jar -d kotlin-material-ui-core
+```
+
+And finally add it with yarn:
+
+```bash
+yarn add file:kotlin-material-ui-core
+```
+
+The problem here is the following:
+
+<details>
+<summary>Console output</summary>
+
+```log
+yarn add link:kotlin-material-ui-core                  
+yarn add v1.19.1
+[1/4] Resolving packages...
+Couldn't find any versions for "kotlinx-html-js" that matches "0.6.12"
+? Please choose a version of "kotlinx-html-js" from this list: (Use arrow keys)
+Couldn't find any versions for "kotlin-react-dom" that matches "16.9.0-pre.83-kotlin-1.3.41"
+? Please choose a version of "kotlin-react-dom" from this list: (Use arrow keys)
+❯ 0.0.2 
+? Please choose a version of "kotlin-react-dom" from this list: 0.0.2error Couldn't find package "kotlin-react@16.9.0-pre.83-kotlin-1.3.41" required by "link:kotlin-material-ui-core" on the "npm" registry.
+info Visit https://yarnpkg.com/en/docs/cli/add for documentation about this command.
+Error: Couldn't find package "kotlin-extensions@1.0.1-pre.83-kotlin-1.3.41" required by "link:kotlin-material-ui-core" on the "npm" registry.
+    at MessageError.ExtendableBuiltin (/usr/lib/node_modules/yarn/lib/cli.js:721:66)
+    at new MessageError (/usr/lib/node_modules/yarn/lib/cli.js:750:123)
+    at PackageRequest.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:36539:17)
+    at Generator.throw (<anonymous>)
+    at step (/usr/lib/node_modules/yarn/lib/cli.js:304:30)
+    at /usr/lib/node_modules/yarn/lib/cli.js:317:13
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+Error: Couldn't find package "kotlin-css-js@1.0.0-pre.83-kotlin-1.3.41" required by "link:kotlin-material-ui-core" on the "npm" registry.
+    at MessageError.ExtendableBuiltin (/usr/lib/node_modules/yarn/lib/cli.js:721:66)
+    at new MessageError (/usr/lib/node_modules/yarn/lib/cli.js:750:123)
+    at PackageRequest.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:36539:17)
+    at Generator.throw (<anonymous>)
+    at step (/usr/lib/node_modules/yarn/lib/cli.js:304:30)
+    at /usr/lib/node_modules/yarn/lib/cli.js:317:13
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+Error: Couldn't find package "kotlin-styled@1.0.0-pre.83-kotlin-1.3.41" required by "link:kotlin-material-ui-core" on the "npm" registry.
+    at MessageError.ExtendableBuiltin (/usr/lib/node_modules/yarn/lib/cli.js:721:66)
+    at new MessageError (/usr/lib/node_modules/yarn/lib/cli.js:750:123)
+    at PackageRequest.<anonymous> (/usr/lib/node_modules/yarn/lib/cli.js:36539:17)
+    at Generator.throw (<anonymous>)
+    at step (/usr/lib/node_modules/yarn/lib/cli.js:304:30)
+    at /usr/lib/node_modules/yarn/lib/cli.js:317:13
+    at process._tickCallback (internal/process/next_tick.js:68:7)
+```
+
+</details>
+
+Probably this is because kotlin-related packages are now provided under `@jetbrains/` NPM scope and in the package.json provided with the jar they are "un-scoped";
+this could be the reason why they can't be found on NPM.
 
 ## Folder Structure
 
