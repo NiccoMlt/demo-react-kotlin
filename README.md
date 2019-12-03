@@ -105,7 +105,107 @@ yarn generate-with-dukat node_modules/@material-ui/core/Button/Button.d.ts
 It generated a lot of files in `src/types` folder, with a lot of type conflicts (see commit cda14e6896f99435db0bdc05436bbafa0c0962ac):
 I can say that it doesn't work correctly out of the box (as also states Matthew Amos in [his README](https://github.com/blackmamo/kotlin-kitties/blob/master/README.md#using-material-ui).
 
+So, I tried adding the code from `kotlin-material-ui` by _subroh0508_, but without result:
 
+<details>
+<summary>Console output</summary>
+
+```log
+yarn run v1.19.1
+$ react-scripts-kotlin build
+Creating an optimized production build...
+Failed to compile.
+
+exception: java.lang.OutOfMemoryError: Java heap space
+    at kotlin.jvm.internal.ArrayIteratorKt.iterator(ArrayIterator.kt:14)
+    at kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$1.iterator(Sequences.kt:634)
+    at kotlin.sequences.FlatteningSequence$iterator$1.<init>(Sequences.kt:255)
+    at kotlin.sequences.FlatteningSequence.iterator(Sequences.kt:254)
+    at kotlin.sequences.SequencesKt___SequencesKt.joinTo(_Sequences.kt:1721)
+    at kotlin.sequences.SequencesKt___SequencesKt.joinToString(_Sequences.kt:1743)
+    at kotlin.sequences.SequencesKt___SequencesKt.joinToString$default(_Sequences.kt:1742)
+    at org.jetbrains.kotlin.js.translate.utils.SignatureUtilsKt.generateSignature(signatureUtils.kt:61)
+    at org.jetbrains.kotlin.js.translate.utils.SignatureUtilsKt.generateSignature(signatureUtils.kt:64)
+    at org.jetbrains.kotlin.js.translate.utils.SignatureUtilsKt.generateSignature(signatureUtils.kt:64)
+    at org.jetbrains.kotlin.js.translate.context.StaticContext$ObjectInstanceNameGenerator.lambda$new$0(StaticContext.java:568)
+    at org.jetbrains.kotlin.js.translate.context.StaticContext$ObjectInstanceNameGenerator$$Lambda$221/816044759.apply(Unknown Source)
+    at org.jetbrains.kotlin.js.translate.context.generator.Generator.generate(Generator.java:52)
+    at org.jetbrains.kotlin.js.translate.context.generator.Generator.get(Generator.java:44)
+    at org.jetbrains.kotlin.js.translate.context.StaticContext.getNameForObjectInstance(StaticContext.java:404)
+    at org.jetbrains.kotlin.js.translate.context.TranslationContext.getNameForObjectInstance(TranslationContext.java:358)
+    at org.jetbrains.kotlin.js.translate.declaration.DeclarationBodyVisitor.visitEnumEntry(DeclarationBodyVisitor.kt:88)
+    at org.jetbrains.kotlin.js.translate.declaration.DeclarationBodyVisitor.visitEnumEntry(DeclarationBodyVisitor.kt:32)
+    at org.jetbrains.kotlin.psi.KtEnumEntry.accept(KtEnumEntry.java:61)
+    at org.jetbrains.kotlin.js.translate.general.TranslatorVisitor.traverseContainer(TranslatorVisitor.java:43)
+    at org.jetbrains.kotlin.js.translate.declaration.ClassTranslator.translate(ClassTranslator.kt:92)
+    at org.jetbrains.kotlin.js.translate.declaration.ClassTranslator.access$translate(ClassTranslator.kt:63)
+    at org.jetbrains.kotlin.js.translate.declaration.ClassTranslator$Companion.translate(ClassTranslator.kt:573)
+    at org.jetbrains.kotlin.js.translate.declaration.AbstractDeclarationVisitor.visitClassOrObject(AbstractDeclarationVisitor.kt:42)
+    at org.jetbrains.kotlin.js.translate.declaration.AbstractDeclarationVisitor.visitClassOrObject(AbstractDeclarationVisitor.kt:35)
+    at org.jetbrains.kotlin.psi.KtVisitor.visitClass(KtVisitor.java:33)
+    at org.jetbrains.kotlin.psi.KtClass.accept(KtClass.kt:20)
+    at org.jetbrains.kotlin.js.translate.general.Translation.translateFile(Translation.java:377)
+    at org.jetbrains.kotlin.js.translate.general.Translation.doGenerateAst(Translation.java:336)
+    at org.jetbrains.kotlin.js.translate.general.Translation.generateAst(Translation.java:305)
+    at org.jetbrains.kotlin.js.facade.K2JSTranslator.translate(K2JSTranslator.kt:162)
+    at org.jetbrains.kotlin.js.facade.K2JSTranslator.translateUnits(K2JSTranslator.kt:107)
+
+stacktrace: Error: exception: java.lang.OutOfMemoryError: Java heap space
+    at kotlin.jvm.internal.ArrayIteratorKt.iterator(ArrayIterator.kt:14)
+    at kotlin.collections.ArraysKt___ArraysKt$asSequence$$inlined$Sequence$1.iterator(Sequences.kt:634)
+    at kotlin.sequences.FlatteningSequence$iterator$1.<init>(Sequences.kt:255)
+    at kotlin.sequences.FlatteningSequence.iterator(Sequences.kt:254)
+    at kotlin.sequences.SequencesKt___SequencesKt.joinTo(_Sequences.kt:1721)
+    at kotlin.sequences.SequencesKt___SequencesKt.joinToString(_Sequences.kt:1743)
+    at kotlin.sequences.SequencesKt___SequencesKt.joinToString$default(_Sequences.kt:1742)
+    at org.jetbrains.kotlin.js.translate.utils.SignatureUtilsKt.generateSignature(signatureUtils.kt:61)
+    at org.jetbrains.kotlin.js.translate.utils.SignatureUtilsKt.generateSignature(signatureUtils.kt:64)
+    at org.jetbrains.kotlin.js.translate.utils.SignatureUtilsKt.generateSignature(signatureUtils.kt:64)
+    at org.jetbrains.kotlin.js.translate.context.StaticContext$ObjectInstanceNameGenerator.lambda$new$0(StaticContext.java:568)
+    at org.jetbrains.kotlin.js.translate.context.StaticContext$ObjectInstanceNameGenerator$$Lambda$221/816044759.apply(Unknown Source)
+    at org.jetbrains.kotlin.js.translate.context.generator.Generator.generate(Generator.java:52)
+    at org.jetbrains.kotlin.js.translate.context.generator.Generator.get(Generator.java:44)
+    at org.jetbrains.kotlin.js.translate.context.StaticContext.getNameForObjectInstance(StaticContext.java:404)
+    at org.jetbrains.kotlin.js.translate.context.TranslationContext.getNameForObjectInstance(TranslationContext.java:358)
+    at org.jetbrains.kotlin.js.translate.declaration.DeclarationBodyVisitor.visitEnumEntry(DeclarationBodyVisitor.kt:88)
+    at org.jetbrains.kotlin.js.translate.declaration.DeclarationBodyVisitor.visitEnumEntry(DeclarationBodyVisitor.kt:32)
+    at org.jetbrains.kotlin.psi.KtEnumEntry.accept(KtEnumEntry.java:61)
+    at org.jetbrains.kotlin.js.translate.general.TranslatorVisitor.traverseContainer(TranslatorVisitor.java:43)
+    at org.jetbrains.kotlin.js.translate.declaration.ClassTranslator.translate(ClassTranslator.kt:92)
+    at org.jetbrains.kotlin.js.translate.declaration.ClassTranslator.access$translate(ClassTranslator.kt:63)
+    at org.jetbrains.kotlin.js.translate.declaration.ClassTranslator$Companion.translate(ClassTranslator.kt:573)
+    at org.jetbrains.kotlin.js.translate.declaration.AbstractDeclarationVisitor.visitClassOrObject(AbstractDeclarationVisitor.kt:42)
+    at org.jetbrains.kotlin.js.translate.declaration.AbstractDeclarationVisitor.visitClassOrObject(AbstractDeclarationVisitor.kt:35)
+    at org.jetbrains.kotlin.psi.KtVisitor.visitClass(KtVisitor.java:33)
+    at org.jetbrains.kotlin.psi.KtClass.accept(KtClass.kt:20)
+    at org.jetbrains.kotlin.js.translate.general.Translation.translateFile(Translation.java:377)
+    at org.jetbrains.kotlin.js.translate.general.Translation.doGenerateAst(Translation.java:336)
+    at org.jetbrains.kotlin.js.translate.general.Translation.generateAst(Translation.java:305)
+    at org.jetbrains.kotlin.js.facade.K2JSTranslator.translate(K2JSTranslator.kt:162)
+    at org.jetbrains.kotlin.js.facade.K2JSTranslator.translateUnits(K2JSTranslator.kt:107)
+    at compiler.run (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/react-scripts-kotlin/scripts/build.js:115:23)
+    at finalCallback (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/webpack/lib/Compiler.js:257:39)
+    at hooks.done.callAsync.err (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/webpack/lib/Compiler.js:273:13)
+    at AsyncSeriesHook.eval [as callAsync] (eval at create (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncSeriesHook.lazyCompileHook (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/tapable/lib/Hook.js:154:20)
+    at onCompiled (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/webpack/lib/Compiler.js:271:21)
+    at hooks.afterCompile.callAsync.err (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/webpack/lib/Compiler.js:681:15)
+    at AsyncSeriesHook.eval [as callAsync] (eval at create (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncSeriesHook.lazyCompileHook (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/tapable/lib/Hook.js:154:20)
+    at compilation.seal.err (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/webpack/lib/Compiler.js:678:31)
+    at AsyncSeriesHook.eval [as callAsync] (eval at create (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncSeriesHook.lazyCompileHook (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/tapable/lib/Hook.js:154:20)
+    at hooks.optimizeAssets.callAsync.err (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/webpack/lib/Compilation.js:1423:35)
+    at AsyncSeriesHook.eval [as callAsync] (eval at create (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/tapable/lib/HookCodeFactory.js:33:10), <anonymous>:6:1)
+    at AsyncSeriesHook.lazyCompileHook (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/tapable/lib/Hook.js:154:20)
+    at hooks.optimizeChunkAssets.callAsync.err (/home/nicco/workspace/tesi/demo-react-kotlin-manual/node_modules/webpack/lib/Compilation.js:1414:32)
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
+```
+
+</details>
+
+To make the build lighter and not kill my laptop, I probably need to adapt the typings, not import all the code.
 
 ## Folder Structure
 
