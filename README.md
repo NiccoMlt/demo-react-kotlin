@@ -84,6 +84,29 @@ About manual adaptation, I can't leave aside those projects that I found on the 
   - one is a demo project similar to this one:
       - https://github.com/blackmamo/kotlin-kitties
 
+The first try was to generate types for Material-UI Button with `dukat`;
+because dukat seems to have a bug that prevents its invokation without Node shell, as I am on linux I added a simple script to `package.json`:
+
+```json
+{
+  "scripts": {
+    "generate-with-dukat": "node $(which dukat) -d src/types"
+  }
+}
+
+```
+
+and then invoked it:
+
+```bash
+yarn generate-with-dukat node_modules/@material-ui/core/Button/Button.d.ts
+```
+
+It generated a lot of files in `src/types` folder, with a lot of type conflicts (see commit cda14e6896f99435db0bdc05436bbafa0c0962ac):
+I can say that it doesn't work correctly out of the box (as also states Matthew Amos in [his README](https://github.com/blackmamo/kotlin-kitties/blob/master/README.md#using-material-ui).
+
+
+
 ## Folder Structure
 
 This is a standard Node/React project, with a standard folder structure:
