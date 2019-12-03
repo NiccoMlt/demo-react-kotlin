@@ -3,6 +3,7 @@ package app
 import react.*
 import react.dom.*
 import logo.*
+import react.materialui.Button
 import ticker.*
 
 class App : RComponent<RProps, RState>() {
@@ -20,6 +21,15 @@ class App : RComponent<RProps, RState>() {
         }
         p("App-ticker") {
             ticker()
+        }
+        div {
+            Button {
+                attrs {
+                    variant="contained"
+                    color="primary"
+                }
+                +"Cool button"
+            }
         }
     }
 }

@@ -207,6 +207,11 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
 
 To make the build lighter and not kill my laptop, I probably need to adapt the typings, not import all the code.
 
+The next step tried was the code found in the GitLab repo by AnimusDesign:
+those offered were adaptations of some components from Material-UI, wrapped in a naive way (i.e. string literal types are not type-checked).
+
+But it worked: it was possible to add a Button to main frontend.
+
 ### NPM module from Maven without Gradle
 
 TODO
