@@ -73,7 +73,7 @@ It's true that some people already adapted it, but they are:
   - not really definitive and stable yet;
   - not available through NPM, but only on Maven.
 
-In this section I will consider the manual adaptation; the fetch of NPM modules from Gradle will be in a following section.
+In this section I will consider the manual adaptation; the fetch of NPM modules from Maven without Gradle will be in a following section.
 
 About manual adaptation, I can't leave aside those projects that I found on the internet:
 
@@ -102,10 +102,10 @@ and then invoked it:
 yarn generate-with-dukat node_modules/@material-ui/core/Button/Button.d.ts
 ```
 
-It generated a lot of files in `src/types` folder, with a lot of type conflicts (see commit cda14e6896f99435db0bdc05436bbafa0c0962ac):
+It generated a lot of files in `src/types` folder, with a lot of type conflicts (see [commit cda14e6](https://github.com/NiccoMlt/demo-react-kotlin/commit/cda14e6896f99435db0bdc05436bbafa0c0962ac)):
 I can say that it doesn't work correctly out of the box (as also states Matthew Amos in [his README](https://github.com/blackmamo/kotlin-kitties/blob/master/README.md#using-material-ui).
 
-So, I tried adding the code from `kotlin-material-ui` by _subroh0508_, but without result:
+So, I tried adding the code from `kotlin-material-ui` by _subroh0508_ (see [commit 8f8ee13](https://github.com/NiccoMlt/demo-react-kotlin/commit/8f8ee1317c13f2e108518bafc72b592cdef25ad4)), but without result:
 
 <details>
 <summary>Console output</summary>
@@ -206,6 +206,10 @@ info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this comm
 </details>
 
 To make the build lighter and not kill my laptop, I probably need to adapt the typings, not import all the code.
+
+### NPM module from Maven without Gradle
+
+TODO
 
 ## Folder Structure
 
