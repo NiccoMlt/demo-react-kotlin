@@ -64,6 +64,16 @@
   resolved "https://registry.yarnpkg.com/@jetbrains/gen-idea-libs/-/gen-idea-libs-2.0.0.tgz#09cb1f7d49a46f23846c1fa203983ccfeef7bb3e"
   integrity sha512-SKJtIQuLNUie8RYkvuQLVIziKXfHIT/ewlUvGMHkOl/JTwDbe7XnNOjykDcD5SvMGlZflbAT4bLo8dYVQzueng==
 
+"@jetbrains/kotlin-css-js@^1.0.0-pre.83":
+  version "1.0.0-pre.83"
+  resolved "https://registry.yarnpkg.com/@jetbrains/kotlin-css-js/-/kotlin-css-js-1.0.0-pre.83.tgz#eac8ece55a29e6a87c5bc36f1f61c337d8f5c66a"
+  integrity sha512-robbWNdVrA7F9xTZx6lahd1Z4AYR3NCusPpzbhCwuh9vE67N1MLmLVi937eHlfBVmf0HIGvF13f55G9zAgjvHQ==
+
+"@jetbrains/kotlin-css@^1.0.0-pre.83":
+  version "1.0.0-pre.83"
+  resolved "https://registry.yarnpkg.com/@jetbrains/kotlin-css/-/kotlin-css-1.0.0-pre.83.tgz#5b6e0955be1e650da073c501c20d3de81ad0d1d4"
+  integrity sha512-Fce04m7BRFI7b5b7uaOdUcNXTBFt6RUdBkaHtVjYYuHgmHuHHZZzPCxP+CB+9vZH9PMr4dasjh64ZwfLARoBug==
+
 "@jetbrains/kotlin-extensions@^1.0.1-pre.83":
   version "1.0.1-pre.83"
   resolved "https://registry.yarnpkg.com/@jetbrains/kotlin-extensions/-/kotlin-extensions-1.0.1-pre.83.tgz#b24edcae7c8e64b6a608392b2ba024f3375c2706"

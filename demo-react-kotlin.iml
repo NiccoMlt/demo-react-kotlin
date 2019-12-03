@@ -13,6 +13,7 @@
     <orderEntry type="library" name="kotlin-react-dom" level="project" />
     <orderEntry type="library" name="kotlinx-html-js" level="project" />
     <orderEntry type="library" name="kotlinx-coroutines-core" level="project" />
+    <orderEntry type="library" name="kotlin-css-js" level="project" />
   </component>
 </module>
 
