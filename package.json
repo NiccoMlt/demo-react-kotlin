@@ -1,5 +1,5 @@
 {
-  "name": "demo-react-kotlin",
+  "name": "demo-react-kotlin-manual",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -24,6 +24,7 @@
     "eject": "react-scripts-kotlin eject",
     "gen-idea-libs": "react-scripts-kotlin gen-idea-libs",
     "get-types": "react-scripts-kotlin get-types --dest=src/types",
+    "generate-with-dukat": "node $(which dukat) -d src/types",
     "postinstall": "npm run gen-idea-libs"
   },
   "config": {
